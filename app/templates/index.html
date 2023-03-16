@@ -4,8 +4,16 @@
 {% block title %}Home{% endblock title %}
 
 {% block content %}
-    <h1>Home</h1>
-    <p>Welcome to this home page!</p>
-    <p>Current server date/time: {{server_time}}</p>
+
+    <div class="container">
+        <h1> TASK Manager</h1>
+
+        <p>Welcome to this home page!</p>
+
+        <img src="{{ image_url }}" alt="patrick">
+
+        <p>Current server date/time: {{server_time}}</p>
+
+    </div>
 {% endblock content %}
 

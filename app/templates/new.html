@@ -1,22 +1,23 @@
 {% extends 'base.html' %}
 
 
-{% block title %} New Task {% endblock title %}
+{% block title %} Add a New Task {% endblock title %}
 
 
 {% block content %}
 <h1>New task</h1>
 <form method="POST" action="{{ url_for('create_task') }}">
+    
 
-    <p>
-        <lable for="summary">Summary</lable>
-        <input type="text" name="summary" id="id_summary">
-    </p>
+    <div class="form-floating mb-5">
+        <input type="text" name="summary" id="id_summary" class="form-control" >
+        <label for="summary">Task Title</label>
+    </div>
 
-    <p>
-        <lable for="description">Description</lable>
-        <input type="text" name="description" id="id_description">
-    </p>
+    <div class="form-floating">
+        <input type="text" name="description" id="id_description" class="form-control" >
+        <label for="description">Task Details</label>
+    </div>
 
     <input type="hidden" value="1" name="status_id" id="id_status_id">
     <input type="hidden" value="1" name="active" id="id_active">
@@ -24,6 +25,7 @@
     <p>
         <input type="submit" value="Create" class="btn btn-success">
     </p>
+
 
 </form>
 {% endblock content %}

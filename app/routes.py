@@ -1,10 +1,12 @@
 from flask import (
     Flask,
     render_template,
-    request
+    request,
+    url_for
 )
 from datetime import datetime
 import requests
+
 
 BACKEND_URL = "http://127.0.0.1:5000"
 app = Flask(__name__)
@@ -12,17 +14,21 @@ app = Flask(__name__)
 
 @app.get("/")
 def index():
+    image_url = url_for('static', filename='patricktodo.png')
     timestamp = datetime.now().strftime("%F %H:%M:%S")
-    return render_template("index.html", server_time=timestamp)
+    return render_template("index.html", server_time=timestamp, image_url=image_url )
+
+
 
 
 @app.get("/tasks")
 def show_tasks():
+    image_url = url_for('static', filename='todomeme.png')
     url = "%s/tasks" % BACKEND_URL
     resp = requests.get(url)
     if resp.status_code == 200:
         task_list = resp.json().get("tasks")
-        return render_template("task_list.html", tasks=task_list)
+        return render_template("task_list.html", tasks=task_list,image_url=image_url )
     return render_template("error.html"), resp.status_code    
 
 @app.get("/tasks/<int:pk>")

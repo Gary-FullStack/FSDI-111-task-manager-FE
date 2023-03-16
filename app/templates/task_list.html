@@ -6,6 +6,11 @@
 
 {% block content %}
 <h1>Tasks</h1>
+
+<div>
+    <img src="{{ image_url }}" class="img-thumbnail" alt="todo" width=" 300" height="400">
+</div>
+
 <ul>
     {% for task in tasks %}
     <li>
